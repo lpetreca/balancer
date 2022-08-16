@@ -1,0 +1,139 @@
+I, [2022-08-15T23:26:16.342462 #17687]  INFO -- Kitchen: -----> Starting Test Kitchen (v3.3.2)
+I, [2022-08-15T23:26:17.300368 #17687]  INFO -- Kitchen: -----> Cleaning up any prior instances of <default-Ubuntu>
+I, [2022-08-15T23:26:17.301709 #17687]  INFO -- Kitchen: -----> Destroying <default-Ubuntu>...
+I, [2022-08-15T23:26:17.304520 #17687]  INFO -- Kitchen: -----> Testing <default-Ubuntu>
+I, [2022-08-15T23:26:17.304798 #17687]  INFO -- Kitchen: -----> Creating <default-Ubuntu>...
+I, [2022-08-15T23:26:17.395254 #17687]  INFO -- Kitchen: Sending build context to Docker daemon  39.42kB
+I, [2022-08-15T23:26:17.544903 #17687]  INFO -- Kitchen: Step 1/17 : FROM ubuntu:20.04
+I, [2022-08-15T23:26:17.546912 #17687]  INFO -- Kitchen:  ---> 3bc6e9f30f51
+I, [2022-08-15T23:26:17.550501 #17687]  INFO -- Kitchen: Step 2/17 : RUN [ ! -f "/sbin/initctl" ] || dpkg-divert --local --rename --add /sbin/initctl                 && ln -sf /bin/true /sbin/initctl
+I, [2022-08-15T23:26:17.550640 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.550696 #17687]  INFO -- Kitchen:  ---> fa11de5a559f
+I, [2022-08-15T23:26:17.550743 #17687]  INFO -- Kitchen: Step 3/17 : ENV DEBIAN_FRONTEND noninteractive
+I, [2022-08-15T23:26:17.557558 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.557705 #17687]  INFO -- Kitchen:  ---> 78922809e920
+I, [2022-08-15T23:26:17.557739 #17687]  INFO -- Kitchen: Step 4/17 : ENV container docker
+I, [2022-08-15T23:26:17.567999 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.568101 #17687]  INFO -- Kitchen:  ---> 919c430f1553
+I, [2022-08-15T23:26:17.568174 #17687]  INFO -- Kitchen: Step 5/17 : RUN apt-get update
+I, [2022-08-15T23:26:17.568236 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.568268 #17687]  INFO -- Kitchen:  ---> d3189cc22ea2
+I, [2022-08-15T23:26:17.568294 #17687]  INFO -- Kitchen: Step 6/17 : RUN apt-get install -y sudo openssh-server curl lsb-release
+I, [2022-08-15T23:26:17.568324 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.568349 #17687]  INFO -- Kitchen:  ---> 8db421aca19c
+I, [2022-08-15T23:26:17.568394 #17687]  INFO -- Kitchen: Step 7/17 : RUN if ! getent passwd kitchen; then                   useradd -d /home/kitchen -m -s /bin/bash -p '*' kitchen;                 fi
+I, [2022-08-15T23:26:17.568458 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.568627 #17687]  INFO -- Kitchen:  ---> 5b907e53beaa
+I, [2022-08-15T23:26:17.568753 #17687]  INFO -- Kitchen: Step 8/17 : RUN echo "kitchen ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/kitchen
+I, [2022-08-15T23:26:17.568812 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.568842 #17687]  INFO -- Kitchen:  ---> b1b43ec59019
+I, [2022-08-15T23:26:17.568884 #17687]  INFO -- Kitchen: Step 9/17 : RUN echo "Defaults !requiretty" >> /etc/sudoers.d/kitchen
+I, [2022-08-15T23:26:17.568916 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.568940 #17687]  INFO -- Kitchen:  ---> 4b3fe3935e31
+I, [2022-08-15T23:26:17.568974 #17687]  INFO -- Kitchen: Step 10/17 : RUN mkdir -p /home/kitchen/.ssh
+I, [2022-08-15T23:26:17.569003 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.569048 #17687]  INFO -- Kitchen:  ---> 371454f5e462
+I, [2022-08-15T23:26:17.569072 #17687]  INFO -- Kitchen: Step 11/17 : RUN chown -R kitchen /home/kitchen/.ssh
+I, [2022-08-15T23:26:17.569112 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.569143 #17687]  INFO -- Kitchen:  ---> 7869f69c483b
+I, [2022-08-15T23:26:17.569195 #17687]  INFO -- Kitchen: Step 12/17 : RUN chmod 0700 /home/kitchen/.ssh
+I, [2022-08-15T23:26:17.569225 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.569279 #17687]  INFO -- Kitchen:  ---> a51b570c9075
+I, [2022-08-15T23:26:17.569303 #17687]  INFO -- Kitchen: Step 13/17 : RUN touch /home/kitchen/.ssh/authorized_keys
+I, [2022-08-15T23:26:17.569331 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.569354 #17687]  INFO -- Kitchen:  ---> 9ce67fecfb45
+I, [2022-08-15T23:26:17.569381 #17687]  INFO -- Kitchen: Step 14/17 : RUN chown kitchen /home/kitchen/.ssh/authorized_keys
+I, [2022-08-15T23:26:17.569498 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.569549 #17687]  INFO -- Kitchen:  ---> 7f44a81d2169
+I, [2022-08-15T23:26:17.569619 #17687]  INFO -- Kitchen: Step 15/17 : RUN chmod 0600 /home/kitchen/.ssh/authorized_keys
+I, [2022-08-15T23:26:17.569648 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.569670 #17687]  INFO -- Kitchen:  ---> 2e47fc314f5a
+I, [2022-08-15T23:26:17.569693 #17687]  INFO -- Kitchen: Step 16/17 : RUN mkdir -p /run/sshd
+I, [2022-08-15T23:26:17.569735 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.569765 #17687]  INFO -- Kitchen:  ---> ac47316929d4
+I, [2022-08-15T23:26:17.569815 #17687]  INFO -- Kitchen: Step 17/17 : RUN echo ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQC2uTvhBx6pCoJwHRkPPJ7pp6Wde8ndFrs+s4vw1HGxf5iH6YGr6G3/nhgVQR0M6YKSt9CcGWdG6gvNy2GsgooYzaSZkgPuojPFuTaYCXQhAUdIOqFlm6Wse4LJ0D+sJg2aVcehkQCy1c6y90kMMFszFEw08Bge7PdLPFU9Y/Y+ok82MhXpOvL8heivtfAZLEx8XIc1NKC20HOB9VWO3M0T+vVqoVXvIfU2y2GCIydcB5bc6O+qIZL+km6PhG13A+h5W/kwlJjt8KHFCP4Wb6WG5Yj49ngDTBslA9WStwS1S1J68sw375IxrN5m6DmwQxm7A4+KWhkQhyC+NPV8/U67\ kitchen_docker_key >> /home/kitchen/.ssh/authorized_keys
+I, [2022-08-15T23:26:17.569839 #17687]  INFO -- Kitchen:  ---> Using cache
+I, [2022-08-15T23:26:17.569869 #17687]  INFO -- Kitchen:  ---> 62706a6e0a7d
+I, [2022-08-15T23:26:17.587662 #17687]  INFO -- Kitchen: Successfully built 62706a6e0a7d
+I, [2022-08-15T23:26:17.970683 #17687]  INFO -- Kitchen: 0a5f5806b16b275805a9f23ed48558cc6df283ca424b39e74dca7bd7f6b30a4f
+I, [2022-08-15T23:26:19.603728 #17687]  INFO -- Kitchen: 0.0.0.0:49155
+I, [2022-08-15T23:26:19.606420 #17687]  INFO -- Kitchen: :::49155
+I, [2022-08-15T23:26:19.823933 #17687]  INFO -- Kitchen: -----> Converging <default-Ubuntu>...
+E, [2022-08-15T23:29:57.145395 #17687] ERROR -- Kitchen: ------Exception-------
+E, [2022-08-15T23:29:57.145494 #17687] ERROR -- Kitchen: Class: Kitchen::ActionFailed
+E, [2022-08-15T23:29:57.145542 #17687] ERROR -- Kitchen: Message: 1 actions failed.
+>>>>>>     Converge failed on instance <default-Ubuntu>.  Please see .kitchen/logs/default-Ubuntu.log for more details
+E, [2022-08-15T23:29:57.145569 #17687] ERROR -- Kitchen: ----------------------
+E, [2022-08-15T23:29:57.145590 #17687] ERROR -- Kitchen: ------Backtrace-------
+E, [2022-08-15T23:29:57.145610 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command.rb:181:in `report_errors'
+E, [2022-08-15T23:29:57.145632 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command.rb:172:in `run_action'
+E, [2022-08-15T23:29:57.145662 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command/test.rb:41:in `block in call'
+E, [2022-08-15T23:29:57.145696 #17687] ERROR -- Kitchen: /usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+E, [2022-08-15T23:29:57.145734 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command/test.rb:37:in `call'
+E, [2022-08-15T23:29:57.145774 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/cli.rb:52:in `perform'
+E, [2022-08-15T23:29:57.145852 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/cli.rb:250:in `test'
+E, [2022-08-15T23:29:57.145918 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/thor-1.2.1/lib/thor/command.rb:27:in `run'
+E, [2022-08-15T23:29:57.145961 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/thor-1.2.1/lib/thor/invocation.rb:127:in `invoke_command'
+E, [2022-08-15T23:29:57.145987 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/thor-1.2.1/lib/thor.rb:392:in `dispatch'
+E, [2022-08-15T23:29:57.146017 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/thor-1.2.1/lib/thor/base.rb:485:in `start'
+E, [2022-08-15T23:29:57.146038 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/bin/kitchen:11:in `block in <top (required)>'
+E, [2022-08-15T23:29:57.146058 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/errors.rb:183:in `with_friendly_errors'
+E, [2022-08-15T23:29:57.146103 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/bin/kitchen:11:in `<top (required)>'
+E, [2022-08-15T23:29:57.146141 #17687] ERROR -- Kitchen: /usr/local/bin/kitchen:23:in `load'
+E, [2022-08-15T23:29:57.146163 #17687] ERROR -- Kitchen: /usr/local/bin/kitchen:23:in `<main>'
+E, [2022-08-15T23:29:57.146183 #17687] ERROR -- Kitchen: ----End Backtrace-----
+E, [2022-08-15T23:29:57.146202 #17687] ERROR -- Kitchen: -Composite Exception--
+E, [2022-08-15T23:29:57.146225 #17687] ERROR -- Kitchen: Class: Kitchen::InstanceFailure
+E, [2022-08-15T23:29:57.146246 #17687] ERROR -- Kitchen: Message: Converge failed on instance <default-Ubuntu>.  Please see .kitchen/logs/default-Ubuntu.log for more details
+E, [2022-08-15T23:29:57.146266 #17687] ERROR -- Kitchen: ----------------------
+E, [2022-08-15T23:29:57.146303 #17687] ERROR -- Kitchen: ------Backtrace-------
+E, [2022-08-15T23:29:57.146324 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/provisioner/base.rb:99:in `rescue in call'
+E, [2022-08-15T23:29:57.146345 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/provisioner/base.rb:98:in `call'
+E, [2022-08-15T23:29:57.146365 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:419:in `block in converge_action'
+E, [2022-08-15T23:29:57.146384 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:563:in `synchronize_or_call'
+E, [2022-08-15T23:29:57.146405 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:524:in `block in action'
+E, [2022-08-15T23:29:57.146425 #17687] ERROR -- Kitchen: /usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+E, [2022-08-15T23:29:57.146444 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:523:in `action'
+E, [2022-08-15T23:29:57.146468 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:414:in `converge_action'
+E, [2022-08-15T23:29:57.146490 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:392:in `block (2 levels) in transition_to'
+E, [2022-08-15T23:29:57.146514 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/lifecycle_hooks.rb:47:in `run_with_hooks'
+E, [2022-08-15T23:29:57.146534 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:391:in `block in transition_to'
+E, [2022-08-15T23:29:57.146554 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:390:in `each'
+E, [2022-08-15T23:29:57.146590 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:390:in `transition_to'
+E, [2022-08-15T23:29:57.146611 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:161:in `verify'
+E, [2022-08-15T23:29:57.146630 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:190:in `block in test'
+E, [2022-08-15T23:29:57.146659 #17687] ERROR -- Kitchen: /usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+E, [2022-08-15T23:29:57.146679 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:186:in `test'
+E, [2022-08-15T23:29:57.146699 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command.rb:195:in `public_send'
+E, [2022-08-15T23:29:57.146719 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command.rb:195:in `run_action_in_thread'
+E, [2022-08-15T23:29:57.146739 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command.rb:166:in `block (2 levels) in run_action'
+E, [2022-08-15T23:29:57.146760 #17687] ERROR -- Kitchen: ----End Backtrace-----
+E, [2022-08-15T23:29:57.146779 #17687] ERROR -- Kitchen: ---Nested Exception---
+E, [2022-08-15T23:29:57.146815 #17687] ERROR -- Kitchen: Class: Kitchen::ActionFailed
+E, [2022-08-15T23:29:57.146909 #17687] ERROR -- Kitchen: Message: SSH exited (2) for command: [          
+          
+          ANSIBLE_ROLES_PATH=/tmp/kitchen/roles sudo -E -s  ansible-playbook -i /tmp/kitchen/hosts  -c local -M /tmp/kitchen/modules -v  --diff       /tmp/kitchen/default.yml
+]
+E, [2022-08-15T23:29:57.146949 #17687] ERROR -- Kitchen: ----------------------
+E, [2022-08-15T23:29:57.146988 #17687] ERROR -- Kitchen: ------Backtrace-------
+E, [2022-08-15T23:29:57.147010 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/provisioner/base.rb:99:in `rescue in call'
+E, [2022-08-15T23:29:57.147031 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/provisioner/base.rb:98:in `call'
+E, [2022-08-15T23:29:57.147052 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:419:in `block in converge_action'
+E, [2022-08-15T23:29:57.147072 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:563:in `synchronize_or_call'
+E, [2022-08-15T23:29:57.147092 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:524:in `block in action'
+E, [2022-08-15T23:29:57.147111 #17687] ERROR -- Kitchen: /usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+E, [2022-08-15T23:29:57.147130 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:523:in `action'
+E, [2022-08-15T23:29:57.147173 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:414:in `converge_action'
+E, [2022-08-15T23:29:57.147193 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:392:in `block (2 levels) in transition_to'
+E, [2022-08-15T23:29:57.147213 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/lifecycle_hooks.rb:47:in `run_with_hooks'
+E, [2022-08-15T23:29:57.147231 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:391:in `block in transition_to'
+E, [2022-08-15T23:29:57.147250 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:390:in `each'
+E, [2022-08-15T23:29:57.147269 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:390:in `transition_to'
+E, [2022-08-15T23:29:57.147288 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:161:in `verify'
+E, [2022-08-15T23:29:57.147306 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:190:in `block in test'
+E, [2022-08-15T23:29:57.147327 #17687] ERROR -- Kitchen: /usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+E, [2022-08-15T23:29:57.147345 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/instance.rb:186:in `test'
+E, [2022-08-15T23:29:57.147364 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command.rb:195:in `public_send'
+E, [2022-08-15T23:29:57.147382 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command.rb:195:in `run_action_in_thread'
+E, [2022-08-15T23:29:57.147401 #17687] ERROR -- Kitchen: /var/lib/gems/2.7.0/gems/test-kitchen-3.3.2/lib/kitchen/command.rb:166:in `block (2 levels) in run_action'
+E, [2022-08-15T23:29:57.147420 #17687] ERROR -- Kitchen: ----End Backtrace-----

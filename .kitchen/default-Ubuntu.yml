@@ -1,0 +1,9 @@
+---
+username: kitchen
+ssh_key: "/etc/ansible/roles/balancer/.kitchen/docker_id_rsa"
+image_id: 62706a6e0a7d
+container_id: 0a5f5806b16b275805a9f23ed48558cc6df283ca424b39e74dca7bd7f6b30a4f
+hostname: localhost
+port: 49155
+last_action: create
+last_error: Kitchen::ActionFailed

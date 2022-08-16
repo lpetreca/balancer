@@ -1,0 +1,11 @@
+---
+- name: Start Nginx
+  service:
+    name: nginx
+    state: started
+    enable: true
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
